@@ -12,9 +12,17 @@ public class GameLevel : MonoBehaviour
     
     private LayerMask mask;
 
+    private CorpseController Corpse;
+
     private void Awake()
     {
         mask = LayerMask.GetMask("RoadNode");
+        Corpse = GameObject.FindObjectOfType<CorpseController>();
+    }
+
+    private void Start()
+    {
+        Corpse.Move2Node(CorpseStartNode , false);
     }
 
     public void Update()
