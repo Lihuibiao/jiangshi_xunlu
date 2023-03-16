@@ -14,27 +14,52 @@ public class GameLevel : MonoBehaviour
 
     private CorpseController Corpse;
 
+    private MonkController Monk;
     private void Awake()
     {
         mask = LayerMask.GetMask("RoadNode");
         Corpse = GameObject.FindObjectOfType<CorpseController>();
+        Monk = GameObject.FindObjectOfType<MonkController>();
     }
 
     private void Start()
     {
         Corpse.Move2Node(CorpseStartNode , false);
+        Corpse.EnterIdeaState();
+        
+        Monk.Move2Node(PlayerStartNode , false);
+        Monk.EnterIdeaState();
     }
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonUp(1))
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
-
+        
             if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity , mask))
             {
-                Debug.LogError("鼠标点击射线检测到 " + hitInfo.transform.name);
+                var node = hitInfo.transform.GetComponent<RoadNode>();
+                if (node != null)
+                {
+                    Monk.Move2Node(node , true);   
+                }
+            }
+        }
+        
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetMouseButtonUp(1))
+        {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+        
+            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity , mask))
+            {
+                var node = hitInfo.transform.GetComponent<RoadNode>();
+                if (node != null)
+                {
+                    Corpse.Move2Node(node , true);   
+                }
             }   
         }
     }

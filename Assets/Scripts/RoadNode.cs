@@ -8,22 +8,22 @@ public class RoadNode : MonoBehaviour
     public bool IsSafeSpeak = false;
     public List<RoadNode> PlayerCanArriveNodes = new List<RoadNode>();
     public List<RoadNode> CorpseCanArriveNodes = new List<RoadNode>();
-
+    public Vector3 StandPos;
     private EGA_Circle Circle;
 
     private void Awake()
     {
         Circle = this.GetComponentInChildren<EGA_Circle>();
-        
     }
 
-    void Start()
+    public void SetNextStepCanArriveColor()
     {
-        
+        Circle.SetColor(Color.white, Color.white);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetNextStepCanNtArriveColor()
     {
+        Circle.SetOrgColor();
     }
+    
 }
