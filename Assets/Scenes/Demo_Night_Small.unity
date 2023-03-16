@@ -4215,7 +4215,7 @@ Transform:
   - {fileID: 1348489601}
   - {fileID: 376780838}
   m_Father: {fileID: 1817323067}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &98498543
 MonoBehaviour:
@@ -4237,6 +4237,8 @@ MonoBehaviour:
   - {fileID: 2105938356}
   - {fileID: 1011070828}
   StandPos: {x: 6.35, y: 0, z: 8.6}
+  CrossNum: 1
+  VertNum: 1
 --- !u!65 &98498544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9180,6 +9182,8 @@ MonoBehaviour:
   - {fileID: 742843296}
   - {fileID: 661585061}
   StandPos: {x: 0, y: 0, z: 8.6}
+  CrossNum: 5
+  VertNum: 1
 --- !u!65 &229618473
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14549,6 +14553,8 @@ MonoBehaviour:
   - {fileID: 1004760902}
   - {fileID: 661585061}
   StandPos: {x: 0, y: 0, z: 5.107}
+  CrossNum: 5
+  VertNum: 3
 --- !u!65 &368164563
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15221,6 +15227,8 @@ MonoBehaviour:
   - {fileID: 2009278720}
   - {fileID: 742843296}
   StandPos: {x: 3.183, y: 0, z: 6.79}
+  CrossNum: 3
+  VertNum: 2
 --- !u!65 &384943292
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17642,6 +17650,7 @@ MonoBehaviour:
   monkType: 0
   currentNode: {fileID: 0}
   needMove2Node: {fileID: 0}
+  canMove: 1
   speed: 0
 --- !u!4 &452406164
 Transform:
@@ -19442,6 +19451,8 @@ MonoBehaviour:
   - {fileID: 229618472}
   - {fileID: 661585061}
   StandPos: {x: 1.658, y: 0, z: 8.6}
+  CrossNum: 4
+  VertNum: 1
 --- !u!65 &495206225
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25368,6 +25379,8 @@ MonoBehaviour:
   - {fileID: 229618472}
   - {fileID: 368164562}
   StandPos: {x: 0, y: 0, z: 6.79}
+  CrossNum: 5
+  VertNum: 2
 --- !u!65 &661585062
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27319,7 +27332,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   corpseType: 0
+  curRoadNode: {fileID: 0}
   needMove2Node: {fileID: 0}
+  findPlayerNode: {fileID: 0}
 --- !u!1001 &737151642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27783,6 +27798,8 @@ MonoBehaviour:
   - {fileID: 229618472}
   - {fileID: 661585061}
   StandPos: {x: 1.658, y: 0, z: 6.79}
+  CrossNum: 4
+  VertNum: 2
 --- !u!65 &742843297
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36909,6 +36926,8 @@ MonoBehaviour:
   - {fileID: 2009278720}
   - {fileID: 368164562}
   StandPos: {x: 1.658, y: 0, z: 5.107}
+  CrossNum: 4
+  VertNum: 3
 --- !u!65 &1004760903
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37303,6 +37322,8 @@ MonoBehaviour:
   - {fileID: 1085616258}
   - {fileID: 384943291}
   StandPos: {x: 4.786, y: 0, z: 8.6}
+  CrossNum: 2
+  VertNum: 1
 --- !u!65 &1011070829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40463,6 +40484,8 @@ MonoBehaviour:
   - {fileID: 1011070828}
   - {fileID: 495206224}
   StandPos: {x: 3.183, y: 0, z: 8.6}
+  CrossNum: 3
+  VertNum: 1
 --- !u!65 &1085616259
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -66827,8 +66850,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 98498542}
   - {fileID: 2105938355}
+  - {fileID: 98498542}
   - {fileID: 1011070827}
   - {fileID: 1085616257}
   - {fileID: 384943290}
@@ -73925,6 +73948,8 @@ MonoBehaviour:
   - {fileID: 384943291}
   - {fileID: 1004760902}
   StandPos: {x: 3.183, y: 0, z: 5.107}
+  CrossNum: 3
+  VertNum: 3
 --- !u!65 &2009278721
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77119,7 +77144,7 @@ Transform:
   - {fileID: 2143268006}
   - {fileID: 1277542993}
   m_Father: {fileID: 1817323067}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2105938356
 MonoBehaviour:
@@ -77137,6 +77162,8 @@ MonoBehaviour:
   PlayerCanArriveNodes: []
   CorpseCanArriveNodes: []
   StandPos: {x: 6.35, y: 0, z: 6.96}
+  CrossNum: 1
+  VertNum: 2
 --- !u!65 &2105938357
 BoxCollider:
   m_ObjectHideFlags: 0

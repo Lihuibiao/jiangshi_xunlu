@@ -23,10 +23,12 @@ public class MonkController : MonoBehaviour
     public MonkType monkType;
     public RoadNode currentNode;
     public RoadNode needMove2Node;
+    public bool canMove = true;
     private AnimatorStateInfo lastStateInfo = new AnimatorStateInfo();
-    
+    public static MonkController Inst;
     private void Awake()
     {
+        Inst = this;
         animation = this.GetComponentInChildren<Animation>();
         monkType = MonkType.Idel;
     }
@@ -62,6 +64,11 @@ public class MonkController : MonoBehaviour
             return;
         }
 
+        if (!canMove)
+        {
+            return;
+        }
+        
         if (currentNode != null)
         {
             foreach (var item in currentNode.PlayerCanArriveNodes)
@@ -69,6 +76,7 @@ public class MonkController : MonoBehaviour
                 item.SetNextStepCanNtArriveColor();
             }
         }
+        
         currentNode = node;
         speed = Vector3.Distance(transform.position, node.StandPos) / 1f;
         transform.LookAt(node.transform);
@@ -121,5 +129,7 @@ public class MonkController : MonoBehaviour
         {
             item.SetNextStepCanArriveColor();
         }
+
+        CorpseController.Inst.OnPlayerMove(this , this.currentNode);
     }
 }

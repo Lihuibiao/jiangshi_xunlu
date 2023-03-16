@@ -23,8 +23,13 @@ public class CorpseController : MonoBehaviour
 {
     public Animator animator;
     public CorpseType corpseType;
+
+    public RoadNode curRoadNode;
+    
+    public static CorpseController Inst;
     private void Awake()
     {
+        Inst = this;
         animator = this.GetComponentInChildren<Animator>();
         corpseType = CorpseType.Idel;
     }
@@ -54,6 +59,7 @@ public class CorpseController : MonoBehaviour
                     needMove2Node = null;
                 }
                 EnterIdeaState();
+                OnArrivedNode();
             }
         }
     }
@@ -62,6 +68,7 @@ public class CorpseController : MonoBehaviour
     public void Move2Node(RoadNode node , bool byJump = true)
     {
         transform.LookAt(node.transform);
+        curRoadNode = node;
         if (byJump)
         {
             needMove2Node = node;
@@ -141,11 +148,42 @@ public class CorpseController : MonoBehaviour
                 needMove2Node = null;
             }
             EnterIdeaState();
+            OnArrivedNode();
         }
     }
 
     private void move2Node(RoadNode node)
     {
         transform.position = new Vector3(node.StandPos.x , node.StandPos.y  , node.StandPos.z);
+    }
+
+    public RoadNode findPlayerNode;
+    public void OnPlayerMove(MonkController monkController , RoadNode node)
+    {
+        var path = new List<RoadNode>() { this.curRoadNode };
+        bool canFind = RoadNode.CorpseCanArruve2NodeFromNodeInVert(this.curRoadNode, node , path);
+        Debug.Log("鬼是否能发现玩家 " + canFind);
+        if (!canFind)
+        {
+            monkController.canMove = true;
+        }
+        else
+        {
+            Debug.LogError("发现路径为: ");
+            foreach (var item in path)
+            {
+                Debug.LogError(item.name);
+            }
+            monkController.canMove = false;
+            if (path.Count >= 2)
+            {
+                this.Move2Node(path[1]);   
+            }
+        }
+    }
+    
+    private void OnArrivedNode()
+    {
+        MonkController.Inst.canMove = true;
     }
 }
